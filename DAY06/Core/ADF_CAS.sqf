@@ -24,7 +24,7 @@ The CAS request can only be called by 1 player. WIP
 ///// CONFIGURATION
 
 // the name of the unit that can request the CAS. Use a commander or JTAC.
-ADF_CAS_requester		= "INF_PC";
+ADF_CAS_requester		= "FOC_CDE_4";
 if (isNil ADF_CAS_requester) exitWith {}; // If the CAS authorized player is not ingame, exit the script
 
 // This is where the CAS aircraft will spawn. Place on edge of map far from the AO.
