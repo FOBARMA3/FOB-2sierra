@@ -14,15 +14,15 @@ call compile preprocessFileLineNumbers "Scr\ADF_redress_Russians.sqf";
 call compile preprocessFileLineNumbers "Scr\ADF_redress_Cherno.sqf";
 
 // Load vehicle Supplies
-[MRAP_2PC] execVM "Core\C\ADF_vCargo_B_Car.sqf";
-{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_1_SQUAD,MRAP_2_2_SQUAD];
-{[_x] execVM "Core\C\ADF_vCargo_B_CarIFT.sqf"} forEach [MRAP_2_1_ALPHA,MRAP_2_1_BRAVO,MRAP_2_2_ALPHA,MRAP_2_2_BRAVO];
-{[_x] execVM "Core\C\ADF_vCargo_B_CarIWT.sqf"} forEach [MRAP_2_3_WT1,MRAP_2_3_WT2];
+[MRAP_2PC] execVM "Core\C\ADF_vCargo_B_TruckMedi.sqf"; // MPO
+{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_1_SQUAD,MRAP_2_2_SQUAD]; // MPO
+{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_1_ALPHA,MRAP_2_1_BRAVO,MRAP_2_2_ALPHA,MRAP_2_2_BRAVO]; // MPO
+{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_3_WT1,MRAP_2_3_WT2]; // MPO
 {[_x] execVM "Core\C\ADF_vCargo_B_TruckMedi.sqf"} forEach [MEDITRUCK_XO,MedFacil];
 
 ///// NRF FARGO
 
-// Foot patrols	
+// Foot patrols
 NRF_grp_1 = [getPos oGunshipPad_1, WEST, (configFile >> "CfgGroups" >> "WEST" >> "BLU_F" >> "Infantry" >> "BUS_InfSentry")] call BIS_fnc_spawnGroup;
 NRF_grp_1 setGroupIdGlobal ["5-1 ALPHA"];
 
@@ -30,7 +30,7 @@ NRF_grp_2 = [getPos oAirbusPad_1, WEST, (configFile >> "CfgGroups" >> "WEST" >> 
 NRF_grp_2 setGroupIdGlobal ["5-1 BRAVO"];
 
 // Static Defences & Ambient Vehicles
-NRF_grp_3 = createGroup west; 
+NRF_grp_3 = createGroup west;
 _p = NRF_grp_3 createUnit ["B_Soldier_F", getPos b_net, [], 0, "SERGEANT"]; _p moveInGunner oStat_01;
 _p = NRF_grp_3 createUnit ["B_Soldier_F", getPos b_net, [], 0, "CORPORAL"]; _p moveInGunner oStat_02;
 _p = NRF_grp_3 createUnit ["B_Soldier_F", getPos b_net, [], 0, "PRIVATE"]; _p moveInGunner oStat_03;
@@ -70,7 +70,6 @@ _ADF_debug_testALL = false;
 	_x addEventHandler ["killed", {
 		[_this select 0] spawn ADF_fnc_CacheExplosion}];
 		remoteExec ["ADF_fnc_CacheDestroyed", 0, true];
-	}]
 } forEach [cacheObj1, cacheObj2, cacheObj3, cacheObj4, cacheObj5, cacheObj6];
 
 // Test all compositions
@@ -92,8 +91,8 @@ if (_ADF_debug_testALL) exitWith {
 		_m setMarkerShape "ICON";
 		_m setMarkerType "mil_dot";
 		_m setMarkerColor "ColorGreen";
-		sleep .1;	
-	};	
+		sleep .1;
+	};
 	hint "All caches created...";
 };
 
@@ -105,18 +104,18 @@ diag_log	"-----------------------------------------------------";
 	private ["_p", "_d", "_name", "_m"];
 	_p = _a call BIS_fnc_selectRandom;
 	_a = _a - [_p];
-	
+
 	_d = markerDir _p;
 	_p = getMarkerPos _p;
-	_p = [_p select 0, _p select 1, 1];	
-	
+	_p = [_p select 0, _p select 1, 1];
+
 	// Move Cache item to random selected position
 	_x setPosATL _p;
 	_x setDamage 0;
 	_x setVectorUp surfaceNormal position _x;
 	_x setDir _d;
 	_x allowDamage true;
-	
+
 	diag_log format ["TWO SIERRA: cache objective %1 at marker %2 (position: %3 %4",_x,_p,round (_p select 0), round (_p select 1)];
 
 	if (ADF_debug) then {
@@ -147,7 +146,7 @@ if (ADF_debug) then {
 ADF_fnc_CacheExplosion = {
 	params ["_p"];
 	private "_o";
-	_o = _p
+	_o = _p;
 	_p = getPos _p;
 	"Bo_GBU12_LGB" createVehicle _p; sleep random 1;
 	"2Rnd_Mk82" createVehicle _p; sleep random 1;
@@ -175,7 +174,7 @@ for "_i" from 1 to 6 do {
 	_c	= format ["cacheObj%1", _i];
 	_p	= call compile format ["%1", _c];
 	_p	= getPos _p;
-	
+
 	_g = [_p, EAST, (configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRebel} forEach units _g;
 
@@ -188,7 +187,7 @@ for "_i" from 1 to 5 do {
 	_c	= format ["cacheObj%1", _i];
 	_p	= call compile format ["%1", _c];
 	_p	= getPos _p;
-	
+
 	_g = [_p, EAST, (configFile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OIA_InfSentry")] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRebel} forEach units _g;
 
