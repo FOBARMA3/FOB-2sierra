@@ -22,9 +22,9 @@ The CAS request can only be called by 1 player. WIP
 ****************************************************************/
 
 // Init
-if (isNil "INF_PC") exitWith {};
+if (isNil "FOC_CDE_4") exitWith {};
 
-ADF_CAS_requester		= INF_PC; // the name of the unit that can request the CAS. Use a commander or JTAC.
+ADF_CAS_requester		= FOC_CDE_4; // the name of the unit that can request the CAS. Use a commander or JTAC.
 ADF_CAS_spawn			= getMarkerPos "mFargo"; // This is where the CAS aircraft will spawn. Place on edge of map.
 ADF_CAS_vector		= getMarkerPos "mAirSupportVector"; // Approach vector marker.
 ADF_CAS_delay			= round (40 + (random 60)); // Delay for the CAS to be created. Simulate that CAS aircraft needs to depart from a distant airbase.
