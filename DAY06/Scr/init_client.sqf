@@ -83,7 +83,7 @@ ADF_fnc_CacheDestroyed = {
 	if (ADF_cacheCnt == 2) exitWith {
 		sleep random 5;
 		["2S","","FAIRCHILD ici TWO SIERRA. Prenez message. Parlez."] call ADF_fnc_MessageParser; sleep 6;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;			
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;
 		["2S","","FAIRCHILD ici TWO SIERRA. Trouvez et détruisez un autre BULLDOG. Parlez"] call ADF_fnc_MessageParser; sleep 13;
 		["ACO","ACO","TWO SIERRA ici FAIRCHILD Reçu. Deux BULLDOGS détruits. Continuez vos recherches. Parlez."] call ADF_fnc_MessageParser; sleep 11;
 		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. Terminer"] call ADF_fnc_MessageParser;
@@ -92,7 +92,7 @@ ADF_fnc_CacheDestroyed = {
 		ADF_endMission = true;
 		sleep random 5;
 		["2S","","FAIRCHILD ici TWO SIERRA. Prenez message. Parlez."] call ADF_fnc_MessageParser; sleep 6;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;			
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;
 		["2S","","FAIRCHILD ici TWO SIERRA. Détruisez le troisième BULLDOG. Parlez"] call ADF_fnc_MessageParser; sleep 13;
 		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Reçu.<br/><br/>Rechercher plus de BULLDOGS dès que prêts.<br/><br/>Sinon faites un RTB. Dans tous les cas, la mission est accomplie. Parlez."] call ADF_fnc_MessageParser; sleep 20;
 		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. Terminer"] call ADF_fnc_MessageParser;
@@ -100,35 +100,35 @@ ADF_fnc_CacheDestroyed = {
 	if (ADF_cacheCnt == 4) exitWith {
 		sleep random 5;
 		["2S","","FAIRCHILD ici TWO SIERRA. Prenez message. Parlez."] call ADF_fnc_MessageParser; sleep 6;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;			
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;
 		["2S","","FAIRCHILD ici TWO SIERRA. Nous continuons les recherches. Nous avons détruit un autre BULLDOG. Parlez."] call ADF_fnc_MessageParser; sleep 13;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Reçu. Quatrième BULLDOG détruit. Out."] call ADF_fnc_MessageParser;	
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Reçu. Quatrième BULLDOG détruit. Out."] call ADF_fnc_MessageParser;
 	};
 	if (ADF_cacheCnt == 5) exitWith {
 		sleep random 5;
 		["2S","","FAIRCHILD ici TWO SIERRA. Prenez message. Parlez."] call ADF_fnc_MessageParser; sleep 6;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8			
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;
 		["2S","","FAIRCHILD ici TWO SIERRA. BULLDOG numéro 4 détruit. Parlez."] call ADF_fnc_MessageParser; sleep 13;
 		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Reçu. RTB. C'est un ordre ! Parlez."] call ADF_fnc_MessageParser; sleep 14;
-		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. Terminer"] call ADF_fnc_MessageParser;		
-	};		
+		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. Terminer"] call ADF_fnc_MessageParser;
+	};
 	if (ADF_cacheCnt == 6) exitWith {
 		sleep random 5;
 		["2S","","FAIRCHILD ici TWO SIERRA. Prenez message. Parlez."] call ADF_fnc_MessageParser; sleep 6;
-		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;					
+		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Envoyez. Parlez."] call ADF_fnc_MessageParser; sleep 8;
 		["2S","","FAIRCHILD ici TWO SIERRA. Six BULLDOGS détruits. Parlez"] call ADF_fnc_MessageParser; sleep 13;
 		["ACO","ACO","TWO SIERRA ici FAIRCHILD. Reçu. Bravo pour l'effort supplémentaire.<br /><br />RTB. Parlez."] call ADF_fnc_MessageParser; sleep 18;
-		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. TWO SIERRA en mouvement. Terminer."] call ADF_fnc_MessageParser;	
-	};		
+		["2S","","FAIRCHILD ici TWO SIERRA. Reçu. TWO SIERRA en mouvement. Terminer."] call ADF_fnc_MessageParser;
+	};
 };
 
 ADF_endMissionMsg = {
-	sleep 10;	
-	["ACO","ACO","Beau boulot TWO SIERRA.<br/><br/>MERE a annoncé que nous avons destabilisé l'ennemi en détruisant ces caches d'armes.<br/><br/>Allez boire une bonne bière au foyez, c'est ma tournée."] call ADF_fnc_MessageParser; 
+	sleep 10;
+	["ACO","ACO","Beau boulot TWO SIERRA.<br/><br/>MERE a annoncé que nous avons destabilisé l'ennemi en détruisant ces caches d'armes.<br/><br/>Allez boire une bonne bière au foyez, c'est ma tournée."] call ADF_fnc_MessageParser;
 	sleep 20;
 
-	_l = ["tLayer"] call BIS_fnc_rscLayer; 
+	_l = ["tLayer"] call BIS_fnc_rscLayer;
 	_l cutText ["", "BLACK", 20];
-	["<img size= '10' shadow='false' image='Img\intro_TwoSierra.paa'/><br/><br/><t size='.7' color='#FFFFFF'>Day 06 | Bulldogs</t>",0,0,9,8] spawn BIS_fnc_dynamicText;		
+	["<img size= '10' shadow='false' image='Img\intro_TwoSierra.paa'/><br/><br/><t size='.7' color='#FFFFFF'>Day 06 | Bulldogs</t>",0,0,9,8] spawn BIS_fnc_dynamicText;
 	['END1',true,22] call BIS_fnc_endMission;
-};	
+};
