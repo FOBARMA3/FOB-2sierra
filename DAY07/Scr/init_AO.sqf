@@ -27,7 +27,7 @@ for "_i" from 1 to 2 do {
 	private ["_g", "_p"];
 	_p = format ["mObj_%1", _i];
 	_p = getMarkerPos _p;
-	
+
 	_g = [_p, east, (configFile >> "CfgGroups" >> "east" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam")] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRussian} forEach units _g;
 
@@ -39,7 +39,7 @@ for "_i" from 1 to 2 do {
 	private ["_g", "_p"];
 	_p = format ["mObj_%1", _i];
 	_p = getMarkerPos _p;
-	
+
 	_g = [_p, east, (configFile >> "CfgGroups" >> "east" >> "OPF_F" >> "Infantry" >> "OIA_InfSentry")] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRussian} forEach units _g;
 
@@ -86,16 +86,16 @@ for "_i" from 1 to 5 do {
 	private ["_p", "_d", "_c", "_v"];
 	_p = format ["mVeh_%1", _i];
 	_d = markerDir _p;
-	_p = getMarkerPos _p;		
+	_p = getMarkerPos _p;
 
 	_c = createGroup east;
 	_v = [_p, _d, "O_G_Offroad_01_armed_F", _c] call BIS_fnc_spawnVehicle;
 	{[_x] call ADF_fnc_redressRebel} forEach units _c;
-	
+
 	_v = _v select 0;
 	_v setVariable ["BIS_enableRandomization", false];
 	[_v, "ADF_rebelOffroad", nil] call bis_fnc_initVehicle;
-	
+
 	[_c, _p, 1500, 4, "MOVE", "SAFE", "RED", "LIMITED", 25] call ADF_fnc_vehiclePatrol;
 };
 
@@ -105,11 +105,11 @@ for "_i" from 1 to 10 do {
 	_p = format ["mDef_%1", _i];
 	_p = getMarkerPos _p;
 	_t = ["OIA_InfTeam", "OIA_InfSquad"] call BIS_fnc_selectRandom;
-	
+
 	_g = [_p, east, (configFile >> "CfgGroups" >> "east" >> "OPF_F" >> "Infantry" >> _t)] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRebel} forEach units _g;
 
-	[_g, _p, 150, 2, true] call ADF_fnc_defendArea;	
+	[_g, _p, 150, 2, true] call ADF_fnc_defendArea;
 };
 
 // Foot patrols
@@ -118,7 +118,7 @@ for "_i" from 1 to 10 do {
 	_p = format ["mPat_%1", _i];
 	_p = getMarkerPos _p;
 	_t = ["OIA_InfTeam", "OIA_InfSentry"] call BIS_fnc_selectRandom;
-	
+
 	_g = [_p, east, (configFile >> "CfgGroups" >> "east" >> "OPF_F" >> "Infantry" >> _t)] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRebel} forEach units _g;
 
@@ -131,7 +131,7 @@ for "_i" from 1 to 6 do {
 	_p = format ["mShort_%1", _i];
 	_p = getMarkerPos _p;
 	_t = ["OIA_InfTeam", "OIA_InfSentry"] call BIS_fnc_selectRandom;
-	
+
 	_g = [_p, east, (configFile >> "CfgGroups" >> "east" >> "OPF_F" >> "Infantry" >> _t)] call BIS_fnc_spawnGroup;
 	{[_x] call ADF_fnc_redressRebel} forEach units _g;
 
@@ -140,7 +140,7 @@ for "_i" from 1 to 6 do {
 
 // Count spawned units
 diag_log	"----------------------------------------------------------------------";
-diag_log format ["TWO SIERRA: AO OpFor spawned, number of Opfor: %1", {side _x == east)} count allUnits];
+diag_log format ["TWO SIERRA: AO OpFor spawned, number of Opfor: %1", {side _x == east} count allUnits];
 diag_log format ["TWO SIERRA: AO independent spawned, number of independent: %1", {side _x == independent} count allUnits];
 diag_log format ["TWO SIERRA: AO BluFor spawned, number of BluFor: %1", {(side _x == west) && (!isPlayer _x)} count allUnits];
 diag_log	"----------------------------------------------------------------------";
