@@ -14,15 +14,15 @@ call compile preprocessFileLineNumbers "Scr\ADF_redress_Russians.sqf";
 call compile preprocessFileLineNumbers "Scr\ADF_redress_Cherno.sqf";
 
 // Load vehicle Supplies
-[MRAP_2PC] execVM "Core\C\ADF_vCargo_B_Car.sqf";
+[MRAP_2PC] execVM "Core\C\ADF_vCargo_B_TruckMedi.sqf";
 {[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_1_SQUAD,MRAP_2_2_SQUAD];
-{[_x] execVM "Core\C\ADF_vCargo_B_CarIFT.sqf"} forEach [MRAP_2_1_ALPHA,MRAP_2_1_BRAVO,MRAP_2_2_ALPHA,MRAP_2_2_BRAVO];
-{[_x] execVM "Core\C\ADF_vCargo_B_CarIWT.sqf"} forEach [MRAP_2_3_WT1,MRAP_2_3_WT2];
+{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_1_ALPHA,MRAP_2_1_BRAVO,MRAP_2_2_ALPHA,MRAP_2_2_BRAVO];
+{[_x] execVM "Core\C\ADF_vCargo_B_CarSQD.sqf"} forEach [MRAP_2_3_WT1,MRAP_2_3_WT2];
 {[_x] execVM "Core\C\ADF_vCargo_B_TruckMedi.sqf"} forEach [MEDITRUCK_XO_1,MedFacil];
 
 ///// FOB KEARNEY
 
-// Foot patrols	
+// Foot patrols
 NRF_grp_1 = [getPos uSpawn, WEST, (configFile >> "CfgGroups" >> "WEST" >> "BLU_F" >> "Infantry" >> "BUS_InfSentry")] call BIS_fnc_spawnGroup;
 NRF_grp_1 setGroupIdGlobal ["5-1 ALPHA"];
 
@@ -30,7 +30,7 @@ NRF_grp_2 = [getPos uSpawn, WEST, (configFile >> "CfgGroups" >> "WEST" >> "BLU_F
 NRF_grp_2 setGroupIdGlobal ["5-1 BRAVO"];
 
 // Static Defences & Ambient Vehicles
-NRF_grp_3 = createGroup west; 
+NRF_grp_3 = createGroup west;
 _p = NRF_grp_3 createUnit ["B_Soldier_F", getPos b_net, [], 0, "SERGEANT"]; _p moveInGunner bDef_01;
 _p = NRF_grp_3 createUnit ["B_Soldier_F", getPos b_net, [], 0, "CORPORAL"]; _p moveInGunner bDef_02;
 NRF_grp_3 setGroupIdGlobal ["5-1 CHARLIE"];
@@ -59,4 +59,4 @@ indep_cp2 = [CP_2a, CP_2b, CP_2c, CP_2d]; {_x enableSimulationGlobal false; _x h
 indep_cp3 = [CP_3a, CP_3b, CP_3c, CP_3d]; {_x enableSimulationGlobal false; _x hideObjectGlobal true;} forEach indep_cp3;
 indep_cp4 = [CP_4a, CP_4b, CP_4c, CP_4d]; {_x enableSimulationGlobal false; _x hideObjectGlobal true;} forEach indep_cp4;
 
-#include "init_AO.sqf" 
+#include "init_AO.sqf"
